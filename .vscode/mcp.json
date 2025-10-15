@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "Sentry": {
+      "url": "https://mcp.sentry.dev/mcp/raveen-kumar/startup-global",
+      "type": "http"
+    }
+  }
+}
