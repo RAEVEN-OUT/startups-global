@@ -12,13 +12,22 @@ import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
+type FormState = {
+  error: string;
+  status: "INITIAL" | "SUCCESS" | "ERROR";
+  _id?: string;
+};
+
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("");
   const { toast } = useToast();
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (
+    prevState: FormState,
+    formData: FormData
+  ): Promise<FormState> => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -71,7 +80,7 @@ const StartupForm = () => {
     }
   };
 
-  const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+  const [, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
   });

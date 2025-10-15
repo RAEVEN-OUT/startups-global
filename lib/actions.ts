@@ -31,7 +31,7 @@ export const createPitch = async (
       category,
       image: link,
       slug: {
-        _type: slug,
+        _type: "slug", // Fixed: should be the string "slug", not the variable
         current: slug,
       },
       author: {
