@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build ",
-    "start": "next start",
-    "lint": "next lint",
     "predev": "npm run typegen",
     "prebuild": "npm run typegen",
-    "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate"
+    "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "packageManager": "npm@10.5.2",
   "overrides": {
@@ -33,11 +33,11 @@
     "easymde": "^2.20.0",
     "lucide-react": "^0.545.0",
     "markdown-it": "^14.1.0",
-    "next": "^15.5.5",
+    "next": "15.0.3",
     "next-auth": "^5.0.0-beta.29",
     "next-sanity": "^11.4.3-canary.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "sanity": "^4.10.3",
     "sanity-plugin-markdown": "^6.0.0",
     "server-only": "^0.0.1",
@@ -47,17 +47,20 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@eslint/eslintrc": "^3.1.0",
+    "@tailwindcss/postcss": "^4.0.0",
     "@types/markdown-it": "^14.1.2",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.5",
+    "eslint": "^9.5.0",
+    "eslint-config-next": "15.0.3",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18",
-    "typescript": "^5"
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": "20.17.0"
   }
 }
