@@ -2,6 +2,7 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone", // Changed from default for better Netlify compatibility
   images: {
     remotePatterns: [
       {
@@ -9,24 +10,25 @@ const nextConfig: NextConfig = {
         hostname: "*",
       },
     ],
+    unoptimized: true, // Required for static export/Netlify
   },
   devIndicators: {
     position: "bottom-right",
   },
-
-  // Disable sourcemaps in production to prevent duplicate uploads
-  productionBrowserSourceMaps: false,
+  // Disable type checking during build (Netlify will handle it)
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
 };
 
-// Sentry config — all options below are officially supported
 export default withSentryConfig(nextConfig, {
   org: "raveen-kumar",
   project: "startup-global-2r",
-
   silent: !process.env.CI,
+  widenClientFileUpload: true,
   disableLogger: true,
   automaticVercelMonitors: true,
-
-  // ✅ Recommended: control source map upload using environment vars
-  // You’ll skip uploading maps by not setting SENTRY_AUTH_TOKEN on Netlify
 });
