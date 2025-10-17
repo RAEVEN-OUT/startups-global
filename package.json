@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "predev": "npm run typegen",
-    "prebuild": "npm run typegen",
+    "prebuild": "npm run typegen:safe",
     "typegen": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate",
+    "typegen:safe": "sanity schema extract --path=./sanity/extract.json && sanity typegen generate || echo 'Typegen skipped'",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
